@@ -40,3 +40,11 @@ def write_students_information(students: list[Student]) -> int:
             students_num += 1
             pickle.dump(student, f)
     return students_num
+
+def read_groups_information(groups_file: str) -> set:
+    specialties = []
+    with open(groups_file, "rb") as f:
+        groups = f.readlines(f)
+        for group in groups:
+            specialties.append(pickle.loads(group).speciality)
+    return set(specialties)
