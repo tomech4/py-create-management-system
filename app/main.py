@@ -4,7 +4,7 @@ import pickle
 
 
 @dataclass
-class Speciality:
+class Specialty:
     name: str
     number: int
 
@@ -20,7 +20,7 @@ class Student:
 
 @dataclass
 class Group:
-    speciality: Speciality
+    specialty: Specialty
     course: str
     students: list[Student]
 
@@ -46,10 +46,10 @@ def read_groups_information(groups_file: str) -> set:
     with open(groups_file, "rb") as f:
         groups = f.readlines(f)
         for group in groups:
-            specialties.append(pickle.loads(group).speciality)
+            specialties.append(pickle.loads(group).specialty)
     return set(specialties)
 
-def read_students_information(students_file: str) -> set:
+def read_students_information(students_file: str) -> list[Student]:
     students_list = []
     with open(students_file, "rb") as f:
         students = f.readlines(f)
