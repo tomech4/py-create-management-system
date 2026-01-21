@@ -23,3 +23,14 @@ class Group:
     speciality: Speciality
     course: str
     students: list[Student]
+
+def write_groups_information(groups: list[Group]) -> int:
+    max_students = 0
+    with open("group.pickle", "wb") as f:
+        for group in groups:
+            if len(group.students) > max_students:
+                max_students = len(group.students)
+            pickle.dump(group, f)
+
+    return max_students
+
