@@ -8,6 +8,7 @@ class Specialty:
     name: str
     number: int
 
+
 @dataclass
 class Student:
     first_name: str
@@ -18,11 +19,13 @@ class Student:
     phone_number: int
     address: str
 
+
 @dataclass
 class Group:
     specialty: Specialty
     course: str
     students: list[Student]
+
 
 def write_groups_information(groups: list[Group]) -> int:
     max_students = 0
@@ -33,6 +36,7 @@ def write_groups_information(groups: list[Group]) -> int:
         pickle.dump(groups, f)
     return max_students
 
+
 def write_students_information(students: list[Student]) -> int:
     students_num = 0
     with open("students.pickle", "wb") as f:
@@ -41,6 +45,7 @@ def write_students_information(students: list[Student]) -> int:
         pickle.dump(students, f)
     return students_num
 
+
 def read_groups_information() -> set:
     specialties = []
     with open("groups.pickle", "rb") as f:
@@ -48,6 +53,7 @@ def read_groups_information() -> set:
         for group in groups:
             specialties.append(group.specialty.name)
     return set(specialties)
+
 
 def read_students_information() -> list[Student]:
     students_list = []
