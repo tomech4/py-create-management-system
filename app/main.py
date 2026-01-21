@@ -48,3 +48,11 @@ def read_groups_information(groups_file: str) -> set:
         for group in groups:
             specialties.append(pickle.loads(group).speciality)
     return set(specialties)
+
+def read_students_information(students_file: str) -> set:
+    students_list = []
+    with open(students_file, "rb") as f:
+        students = f.readlines(f)
+        for student in students:
+            students_list.append(pickle.loads(student))
+    return students_list
